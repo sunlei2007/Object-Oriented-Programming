@@ -77,7 +77,7 @@ class VendingMachine
         //change product quantity
         Inventory[product] = Inventory[product] - 1;
 
-        //change MoneyFloat quatity
+        //change MoneyFloat quatity.
         backCoinResult = new Dictionary<int, int>();
         ComputeCoinCount(money-product.Price);
         foreach(var dic in backCoinResult)
