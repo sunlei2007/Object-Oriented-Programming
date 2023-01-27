@@ -45,7 +45,8 @@ void RegStudent(Course course,Student student)
     }
     if (!isAdded)
     {
-        lstRelation.Add(new CourseToStudent(1000+lstRelation.Count+1, course, student, DateTime.Now));
+        if(GetCourseCount(course)<course.Capacity)
+          lstRelation.Add(new CourseToStudent(1000+lstRelation.Count+1, course, student, DateTime.Now));
     }
 }
 
@@ -59,6 +60,19 @@ void DeRegStudent(Course course, Student student)
             break;
         }
     }
+}
+
+int GetCourseCount(Course course)
+{
+    int count=1;
+    foreach (var item in lstRelation)
+    {
+        if (item.Course.CourseId == course.CourseId)
+        {
+            count++;
+        }
+    }
+    return count;
 }
 
 
